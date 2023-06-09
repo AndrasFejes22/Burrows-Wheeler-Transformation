@@ -18,10 +18,11 @@ public class MatrixMain {
             System.out.println();
         }
 
-        printColumn("vjaa");
+        printColumn("ww MYeelllloo");
     }
 
     public static void printColumn(String input){
+        System.out.println("pow: "+Math.pow(input.length(), 2));
         //StringBuilder sb = new StringBuilder();
         StringBuilder sb2 = new StringBuilder();
         //String temp = null;
@@ -41,7 +42,8 @@ public class MatrixMain {
         }
         Arrays.sort(arr);
         System.out.println("arr_1: "+Arrays.toString(arr));
-        while (sb2.toString().length()<16) {
+        //while (sb2.toString().length()<(Math.pow(input.length(), 2))) {
+        while (arr[0].length()<input.length()) {
 
             /*
             for (int i = 0; i < arr.length; i++) {
@@ -73,7 +75,8 @@ public class MatrixMain {
             Arrays.sort(arr);
             System.out.println("arr_2: "+Arrays.toString(arr));
             sb2.append(arrayToString(arr));
-            System.out.println("sb2: "+sb2);
+            //System.out.println("sb2: "+sb2);
+            System.out.println("sb2: "+sb2.toString().length());
         }
 
 
