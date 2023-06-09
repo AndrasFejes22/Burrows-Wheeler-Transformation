@@ -87,4 +87,34 @@ public class BurrowsWheeler {
         return num;
     }
 
+    public static void printMatrix(String[] arr){
+        for (int i = 0; i < arr.length; i++) {
+
+            System.out.println(arr[i]);
+        }
+        System.out.println();
+    }
+    public static void printMatrix2D(String[][] arr){
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[0].length; j++) {
+
+                System.out.print(arr[i][j]);
+            }
+        }
+        System.out.println();
+    }
+
+
+    public static String [][] stringTo2DArray(String input){
+        String [] arr1 = input.split("");
+        String [][] array = new String[input.length()][1];
+        for (int i = 0; i < input.length(); i++) {
+            for (int j = 0; j <1; j++) {
+                array[i][j] = arr1[i];
+            }
+
+        }
+        return array;
+    }
+
 }
