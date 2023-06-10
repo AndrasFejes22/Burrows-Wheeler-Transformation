@@ -5,16 +5,41 @@ import java.util.*;
 public class BurrowsWheeler {
 
 
-    public static BWT encode(String s) {
-        String[] arr = shifting(s);
-        String lastLetters = lastLetters(arr);
-        int num = inputNum(arr, s);
-        return new BWT(lastLetters, num);          // new BWT("stuff", -1);
+    public static BWT2 encode(String s) {
+        if(s.isEmpty()){
+            return new BWT2("", 0);
+        }else {
+            System.out.println("string: " + s);
+            String[] arr = shifting(s);
+            String lastLetters = lastLetters(arr);
+            int num = inputNum(arr, s);
+            return new BWT2(lastLetters, num);
+        }
     }
 
+    //For the empty input, the row number is ignored.
     public static String decode(String s, int n) {
-        // Your code here!
-        return null;
+        if(s.isEmpty() || n < 0){
+            return "";
+        }else {
+            String[] arr = s.split("");
+            String[] inputArr = s.split("");
+            for (int i = 0; i < arr.length; i++) {
+                String[] sorted = s.split("");
+                Arrays.sort(sorted);
+                arr[i] = arr[i].concat(sorted[i]);
+            }
+            Arrays.sort(arr);
+            while (arr[0].length() < s.length()) {
+
+                for (int i = 0; i < inputArr.length; i++) {
+                    arr[i] = inputArr[i].concat(arr[i]);
+                }
+                Arrays.sort(arr);
+            }
+
+            return arr[n];
+        }
     }
 
     // no need here
@@ -115,6 +140,38 @@ public class BurrowsWheeler {
 
         }
         return array;
+    }
+
+    public static class BWT2 {
+
+        public String s;
+        public int n;
+
+        public BWT2(String s, int n) {
+            this.s = s;
+            this.n = n;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            BWT2 bwt2 = (BWT2) o;
+            return n == bwt2.n && Objects.equals(s, bwt2.s);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(s, n);
+        }
+
+        @Override
+        public String toString() {
+            return "BWT2{" +
+                    "s='" + s + '\'' +
+                    ", n=" + n +
+                    '}';
+        }
     }
 
 }
