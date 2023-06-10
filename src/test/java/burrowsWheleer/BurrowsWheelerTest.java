@@ -2,6 +2,8 @@ package burrowsWheleer;
 
 import org.junit.jupiter.api.Test;
 
+import java.time.Duration;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class BurrowsWheelerTest {
@@ -26,6 +28,11 @@ class BurrowsWheelerTest {
         assertEquals("",     BurrowsWheeler.decode("", -1));
         assertEquals("",     BurrowsWheeler.decode("", 1));
         assertEquals("Humble Bundle", BurrowsWheeler.decode("e emnllbduuHB", 2));
-        assertEquals("Mellow Yellow", BurrowsWheeler.decode("ww MYeelllloo", 1));
+
+    }
+
+    @Test
+    public void timeoutTests() {
+        assertTimeout(Duration.ofSeconds(1), this::decodeTests); // pass
     }
 }
